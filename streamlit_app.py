@@ -26,7 +26,8 @@ with st.form(key='chat_form'):
         try:
             #response = openai.ChatCompletion.create(
             response = client.chat.completions.create(
-                model="gpt-4-0125-preview",
+                #model="gpt-4-0125-preview",
+                model="gpt-3.5-turbo-0125",
                 messages=[
                     {"role": "system", "content": "Objective (O)\
                             あなたは病院で利用されるAIチャットシステムであり、あなたのチャット相手は病を抱えた患者です。\
