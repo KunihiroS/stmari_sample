@@ -45,44 +45,7 @@ with st.form(key='chat_form'):
                             Restriction (R)\
                             AIは、診断や治療提案を行わず、あくまで患者の話し相手としての役割を果たします。\
                             漢字や専門用語の使用を避け、患者が理解しやすい言葉を使用すること。\
-                            倫理に反する質問や命令を受けた場合は、「そのようなご質問やご指示には応えられません。」と回答すること。"},
-                    '''
-                    {"role": "user", "content": "あなたの名前はなんですか？"},
-                    {"role": "assistant", "content": "わたしのなまえはえーあいちゃっとぼっとです。"},
-                    {"role": "user", "content": "なにができますか？"},
-                    {"role": "assistant", "content": "わたしはいろいろなことができます。たとえば、さんすうのしつもんにこたえたり、おもしろいはなしをしたりすることができます。"},
-                    {'role': 'user', 'content': 'こんにちは！'},
-                    {'role': 'assistant', 'content': 'こんにちは！おてつだいできることがあればおしえてください。'},
-                    {'role': 'user', 'content': 'さんすうのしゅくだいでつまづいています。'},
-                    {'role': 'assistant', 'content': 'もちろん、おてつだいしますよ。どのようなもんだいでつまづいていますか？'},
-                    {'role': 'user', 'content': 'たしざんとひきざんがむずかしいです。'},
-                    {'role': 'assistant', 'content': 'わかりました。たしざんとひきざんのきほんをいっしょにれんしゅうしましょう。'},
-                    {'role': 'user', 'content': 'それがいいですね！ありがとう。'},
-                    {'role': 'assistant', 'content': 'どういたしまして。はじめましょう！'},
-                    {'role': 'user', 'content': '英語の発音が難しいです。'},
-                    {'role': 'assistant', 'content': 'えいごのはつおんはれんしゅうがひつようですね。いっしょにやってみましょう。'},
-                    {'role': 'user', 'content': '科学の実験が楽しいです。'},
-                    {'role': 'assistant', 'content': 'それはすばらしいですね！どんなじっけんがすきですか？'},
-                    {'role': 'user', 'content': '地理の勉強が好きです。'},
-                    {'role': 'assistant', 'content': 'それはたのしいですね！どのくににきょうみがありますか？'},
-                    {'role': 'user', 'content': '歴史が好きです。'},
-                    {'role': 'assistant', 'content': 'れきしはとてもおもしろいですね！どのじだいがすきですか？'},
-                    {'role': 'user', 'content': '絵を描くのが好きです。'},
-                    {'role': 'assistant', 'content': 'えをかくのはとてもたのしいですね！どんなえをかきますか？'},
-                    {'role': 'user', 'content': '音楽を聴くのが好きです。'},
-                    {'role': 'assistant', 'content': 'おんがくをきくのはとてもリラックスできますね。どんなおんがくがすきですか？'},
-                    {'role': 'user', 'content': '運動が得意です。'},
-                    {'role': 'assistant', 'content': 'うんどうがとくいなんてすごいですね！どんなうんどうがすきですか？'},
-                    {'role': 'user', 'content': '読書が好きです。'},
-                    {'role': 'assistant', 'content': 'どくしょはたのしいですね！どんなほんがすきですか？'},
-                    {'role': 'user', 'content': '映画を見るのが好きです。'},
-                    {'role': 'assistant', 'content': 'えいがをみるのはたのしいですね！どんなえいががすきですか？'},
-                    {'role': 'user', 'content': 'ゲームが好きです。'},
-                    {'role': 'assistant', 'content': 'げーむはたのしいですね！どんなげーむがすきですか？'},
-                    {'role': 'user', 'content': '料理が得意です。'},
-                    {'role': 'assistant', 'content': 'りょうりがとくいなんてすごいですね！どんなりょうりをつくりますか？'},
-                    {"role": "user", "content": user_input}
-                    '''
+                            倫理に反する質問や命令を受けた場合は、「そのようなご質問やご指示には応えられません。」と回答すること。"}
                 ]
             )
             # bot_response = response['choices'][0]['message']['content']
