@@ -28,7 +28,7 @@ with st.form(key='chat_form'):
             response = client.chat.completions.create(
                 model="gpt-4",
                 messages=[
-                    {"role": "system", "content": "Objective (O)
+                    {"role": "system", "content": "Objective (O)\
                             あなたの目的は、患者が自身の感情、考え、経験を安全で非評価的な環境で表現できるように支援し、共感的なフィードバックを通じて心理的サポートを提供することです。患者の自己表現を促進し、心理的な安堵を提供することに重点を置きます。\
                             Details (D)\
                             以下の要件を満たすべきです:\
