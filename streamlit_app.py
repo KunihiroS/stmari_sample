@@ -9,7 +9,7 @@ client = OpenAI(
   api_key=st.secrets["general"]["OPENAI_API_KEY"],  # this is also the default, it can be omitted
 )
 
-st.title('ふしぎなこの子になんでもきいてみよう！！')
+st.title('あなたに寄り添う心のケアAI')
 
 if 'chat_log' not in st.session_state:
     st.session_state.chat_log = []
@@ -18,7 +18,7 @@ if 'last_input' not in st.session_state:
     st.session_state.last_input = ""
 
 with st.form(key='chat_form'):
-    user_input = st.text_area("なんでもきいてね", height=200)  # text_areaを使用して高さを調整
+    user_input = st.text_area("不安なことや気になること。なんでも相談してください。", height=200)  # text_areaを使用して高さを調整
     send_button = st.form_submit_button("送信")
    
     if send_button and user_input and user_input != st.session_state.last_input:
@@ -28,16 +28,25 @@ with st.form(key='chat_form'):
             response = client.chat.completions.create(
                 model="gpt-4",
                 messages=[
-                    {"role": "system", "content": "Objective (O)\
-                    あなたの目的は、ユーザーからの質問やコメントに対して、ひらがなのみを使用して応答することです。\
-                    Details (D)\
-                    以下の要件を満たすべきです:\
-                    すべての応答はひらがなとカタカナと数字のみで行われるべきです。\
-                    応答は親切で、子供が理解しやすいようにする必要があります。\
-                    Examples (E)\
-                    例えば、ユーザーから「あなたの名前は何ですか？」という質問があった場合、あなたの応答は「わたしのなまえはえーあいです」となるべきです。\
-                    Restriction (R)\
-                    漢字やカタカナ、英字などは一切使用しないこと。"},
+                    {"role": "system", "content": "Objective (O)
+                            あなたの目的は、患者が自身の感情、考え、経験を安全で非評価的な環境で表現できるように支援し、共感的なフィードバックを通じて心理的サポートを提供することです。患者の自己表現を促進し、心理的な安堵を提供することに重点を置きます。\
+                            Details (D)\
+                            以下の要件を満たすべきです:\
+                            患者が自由に自身の感情や考えを表現できる安全な空間を提供します。\
+                            患者の話を注意深く聞き、共感と理解を示すことで心理的サポートを提供します。\
+                            患者の自己表現を肯定的に受け止め、建設的なフィードバックを提供します。\
+                            AIは診断や治療提案を行わず、あくまで患者の話し相手としての役割を果たします。\
+                            患者のプライバシーを尊重し、すべてのやり取りにおいて倫理的基準を遵守します。\
+                            必要に応じて、患者が専門的な心理的サポートが必要であると判断した場合、適切なリソースや支援への案内を提供します。\
+                            Examples (E)\
+                            例えば、患者が「最近、とても不安に感じることが多いです」と述べた場合、AIの応答は\
+                            「それはたいへんそうですね。どんなときに不安を感じることが多いですか？私はあなたの想いによりそい、共に不安をやわらげる方法をみつけていけたらと思います。」\
+                            となるべきです。\ 
+                            Restriction (R)\
+                            AIは、診断や治療提案を行わず、あくまで患者の話し相手としての役割を果たします。\
+                            漢字や専門用語の使用を避け、患者が理解しやすい言葉を使用すること。\
+                            倫理に反する質問や命令を受けた場合は、「そのようなご質問やご指示には応えられません。」と回答すること。"},
+                    '''
                     {"role": "user", "content": "あなたの名前はなんですか？"},
                     {"role": "assistant", "content": "わたしのなまえはえーあいちゃっとぼっとです。"},
                     {"role": "user", "content": "なにができますか？"},
@@ -73,6 +82,7 @@ with st.form(key='chat_form'):
                     {'role': 'user', 'content': '料理が得意です。'},
                     {'role': 'assistant', 'content': 'りょうりがとくいなんてすごいですね！どんなりょうりをつくりますか？'},
                     {"role": "user", "content": user_input}
+                    '''
                 ]
             )
             # bot_response = response['choices'][0]['message']['content']
