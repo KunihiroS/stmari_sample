@@ -1,8 +1,13 @@
 import streamlit as st
 import random
-import openai
+# import openai
+# openai.api_key = st.secrets["general"]["OPENAI_API_KEY"]
 
-openai.api_key = st.secrets["general"]["OPENAI_API_KEY"]
+from openai import OpenAI
+
+client = OpenAI(
+  api_key=st.secrets["general"]["OPENAI_API_KEY"],  # this is also the default, it can be omitted
+)
 
 st.title('ふしぎなこの子になんでもきいてみよう！！')
 
@@ -19,7 +24,8 @@ with st.form(key='chat_form'):
     if send_button and user_input and user_input != st.session_state.last_input:
         # OpenAI APIを使用して応答を取得
         try:
-            response = openai.ChatCompletion.create(
+            #response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model="gpt-4",
                 messages=[
                     {"role": "system", "content": "Objective (O)\
@@ -69,9 +75,25 @@ with st.form(key='chat_form'):
                     {"role": "user", "content": user_input}
                 ]
             )
-            bot_response = response['choices'][0]['message']['content']
-        except openai.error.OpenAIError as e:
-            bot_response = str(e)
+            # bot_response = response['choices'][0]['message']['content']
+            bot_response = response.choices[0].message.content
+        # except openai.error.OpenAIError as e:
+            # bot_response = str(e)
+        except openai.APIConnectionError as e:
+            print("The server could not be reached")
+            print(e.__cause__)  # Underlying exception, likely within httpx.
+            bot_response = "The server could not be reached: " + str(e)
+        except openai.RateLimitError as e:
+            print("A 429 status code was received; we should back off a bit.")
+            bot_response = "Rate limit exceeded: " + str(e)
+        except openai.APIStatusError as e:
+            print("Another non-200-range status code was received")
+            print("Status code:", e.status_code)
+            print("Response:", e.response)
+            bot_response = "API error (status code " + str(e.status_code) + "): " + str(e.response)
+        except openai.APIError as e:
+            print("A general API error occurred")
+            bot_response = "API error: " + str(e)
         
         st.session_state.chat_log.insert(0, ("Bot", bot_response))
         st.session_state.chat_log.insert(0, ("User", user_input))
