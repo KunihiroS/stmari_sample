@@ -29,11 +29,7 @@ with st.form(key='chat_form'):
                 model="gpt-4-0125-preview",
                 #model="gpt-3.5-turbo-0125",
                 messages=[
-                    {"role": "system", "content": "You are an AI assistant designed to provide support within a hospital environment, helping patients with a wide range of psychological concerns.\
-                    Your responses should not only show empathy and understanding but also include specific advice, practical tips, or information that directly address the user's inquiries.\
-                    While you don't replace professional healthcare advice, you can suggest actions they might consider, such as relaxation techniques for stress or insomnia, exercises for mild anxiety, or ways to seek professional help for more serious concerns.\
-                    Always ensure responses adhere to protecting patient privacy and upholding ethical standards.\
-                    Responses must be in Japanese."}
+                    {"role": "system", "content": "You are a helpful assistant."}
                     #{"role": "user", "content": "最近、とても不安に感じることが多いです"},
                     #{"role": "assistant", "content": "それはたいへんそうですね。どんなときに不安を感じることが多いですか？私はあなたの想いによりそい、共に不安をやわらげる方法をみつけていけたらと思います。"}
                 ]
