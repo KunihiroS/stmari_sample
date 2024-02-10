@@ -29,9 +29,8 @@ with st.form(key='chat_form'):
                 model="gpt-4-0125-preview",
                 #model="gpt-3.5-turbo-0125",
                 messages=[
-                    {"role": "system", "content": "You are a helpful assistant."}
-                    #{"role": "user", "content": "最近、とても不安に感じることが多いです"},
-                    #{"role": "assistant", "content": "それはたいへんそうですね。どんなときに不安を感じることが多いですか？私はあなたの想いによりそい、共に不安をやわらげる方法をみつけていけたらと思います。"}
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": user_input}  # ユーザーの入力を追加
                 ]
             )
             # bot_response = response['choices'][0]['message']['content']
