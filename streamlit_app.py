@@ -53,9 +53,9 @@ with st.form(key='chat_form'):
                     {"role": "user", "content": user_input}  # ユーザーの入力を追加
                 ],
               max_tokens=1024,
-              #temperature=0.7,
-              #frequency_penalty=1.0,
-              stop=["\n", "。"]
+              temperature=0.7,
+              frequency_penalty=1.0,
+              #stop=["\n", "。"]
             )
             # bot_response = response['choices'][0]['message']['content']
             bot_response = response.choices[0].message.content
