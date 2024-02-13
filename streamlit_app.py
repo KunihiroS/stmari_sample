@@ -55,7 +55,7 @@ with st.form(key='chat_form'):
                     あなたの目標は、ユーザーにとって直ちに役立つ指導を提供し、必要に応じて様々なトピックをカバーできるよう広範な知識ベースを活用することです。"},
                     {"role": "user", "content": user_input}  # ユーザーの入力を追加
                 ],
-              max_tokens = 128,
+              max_tokens = 384,
               temperature=0.7,
               frequency_penalty=1.0,
               stop=["\n", "。"]
